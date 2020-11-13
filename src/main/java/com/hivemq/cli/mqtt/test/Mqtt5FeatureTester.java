@@ -121,9 +121,9 @@ public class Mqtt5FeatureTester {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
-        publisher.toBlocking().connect();
-        sharedSubscriber1.toBlocking().connect();
-        sharedSubscriber2.toBlocking().connect();
+        publisher.toBlocking().connectWith().cleanStart(true).send();
+        sharedSubscriber1.toBlocking().connectWith().cleanStart(true).send();
+        sharedSubscriber2.toBlocking().connectWith().cleanStart(true).send();
 
 
         try {
